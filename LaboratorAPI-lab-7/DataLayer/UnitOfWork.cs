@@ -6,6 +6,8 @@ namespace DataLayer
     {
         public StudentsRepository Students { get; }
         public ClassRepository Classes { get; }
+        public UserRepository Users { get; }
+        public RolesRepository Roles { get; }
 
         private readonly AppDbContext _dbContext;
 
@@ -13,12 +15,16 @@ namespace DataLayer
         (
             AppDbContext dbContext,
             StudentsRepository studentsRepository,
-            ClassRepository classes
+            ClassRepository classes,
+            UserRepository users,
+            RolesRepository roles
         )
         {
             _dbContext = dbContext;
             Students = studentsRepository;
             Classes = classes;
+            Users = users;
+            Roles = roles;
         }
 
         public void SaveChanges()
@@ -27,7 +33,7 @@ namespace DataLayer
             {
                 _dbContext.SaveChanges();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 var errorMessage = "Error when saving to the database: "
                     + $"{exception.Message}\n\n"
