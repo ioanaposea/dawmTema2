@@ -10,10 +10,7 @@ namespace Core.Dtos
     public class RegisterDto
     {
         [Required, MaxLength(100)]
-        public string Firstname { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Lastname { get; set; }
+        public string Username { get; set; }
         
         [Required, MaxLength(100)]
         public string Email { get; set; }
